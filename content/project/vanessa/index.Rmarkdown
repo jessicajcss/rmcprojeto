@@ -1,0 +1,16 @@
+---
+title: "Dra. Vanessa Abelaira dos Anjos"
+subtitle: ""
+excerpt: "Servidora da Universidade Federal do Paraná (UFPR)"
+date: 
+author: ""
+draft: false
+categories:
+weight: 3
+links: 
+
+---
+
+```{r, echo=FALSE}
+knitr::include_url("http://lattes.cnpq.br/2436088207714529", height = 1000)
+```

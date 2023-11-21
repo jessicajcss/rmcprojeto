@@ -1,0 +1,50 @@
+---
+title: "Rede de Monitoramento em Rio Branco do Sul"
+subtitle: "https://www2.purpleair.com/"
+excerpt: "Dados de monitoramento de particulas e gases e dados meteorológicos em tempo real fornecidos pela Estação Meteorológica da Prefeitura Municipal de RBS."
+date: 2023-11-20
+author: "Lab-Air"
+draft: false
+images:
+series:
+tags: 
+categories:
+layout: single
+---
+## Área de estudo (RMC)
+```{r m, echo = FALSE}
+library(leaflet)
+library(leaflet.extras)
+m = leaflet() %>% addTiles() %>% setView(-49.32, -25.19, zoom = 13.3)
+m
+```
+
+# Rede de Monitoramento em Rio Branco do Sul
+
+
+## Estação Meteorológica - Rio Branco do Sul
+
+<script defer src="https://wdg.plugfield.com.br/device/plugfield-widget-v1-sd-x.js"></script>
+<plugfield-widget-v1 data-device="3118" data-key="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjIxNTc0LCJhaWQiOjE1OTE5LCJvcmlnaW4iOiJybWNxdWFsaWRhZGVkb2FyLm5ldGxpZnkuYXBwIiwiaWF0IjoxNzAwNTE1NzI1fQ.BmRjlaRlYZM3zvlipj-k50pOJMrOaTCUAYABTWRPizE"></plugfield-widget-v1>
+<plugfield-widget-v1 data-device="3184" data-key="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjIxNTc0LCJhaWQiOjE1OTE5LCJvcmlnaW4iOiJybWNxdWFsaWRhZGVkb2FyLm5ldGxpZnkuYXBwIiwiaWF0IjoxNzAwNTE1NzI1fQ.BmRjlaRlYZM3zvlipj-k50pOJMrOaTCUAYABTWRPizE"></plugfield-widget-v1>
+
+
+
+## Sensores internos - Rio Branco do Sul
+
+```{r}
+knitr::include_url("https://map.purpleair.com/1/o/mPM25/a10/p604800/cC4#13.23/-25.19/-49.31042")
+```
+
+*Verifique a seguinte seleção (inside) na caixa suspensa*
+![](images/interno.png)
+
+
+
+## Sensores externos - Rio Branco do Sul
+```{r}
+knitr::include_url("https://map.purpleair.com/1/m/i/mPM25/a0/p604800/cC4#13.53/-25.19077/-49.31164")
+```
+
+*Verifique a seguinte seleção (outside) na caixa suspensa*
+![](images/externo.png)

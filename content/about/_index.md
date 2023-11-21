@@ -1,7 +1,7 @@
 ---
-title: "About"
+title: "Inventário de material particulado em municípios com atividades minerais estabelecidas"
 description: |
-  A website template for Hugo developed by RStudio & Formspree and available for free.
+  Um projeto conduzido pela equipe do Laboratório de Análise e Qualidade do Ar (Lab-Air) da UFPR sob apoio da 4ª Promotoria de Justiça do Foro Regional de Campo Largo da Comarca da Região Metropolitana de Curitiba/PR.
 show_header: true
 sidebar_left: false
 # Keep this! Do not edit.

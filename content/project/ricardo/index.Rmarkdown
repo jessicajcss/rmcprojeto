@@ -1,0 +1,16 @@
+---
+title: "Prof. Dr. Ricardo Henrique Moreton Godoi"
+subtitle: ""
+excerpt: "Professor do Departamento de Engenharia Ambiental (PPGEA/UFPR)"
+date: 
+author: ""
+draft: false
+categories:
+weight: 1
+links: 
+
+---
+
+```{r, echo=FALSE}
+knitr::include_url("http://lattes.cnpq.br/2605738164674838", height = 1000)
+```

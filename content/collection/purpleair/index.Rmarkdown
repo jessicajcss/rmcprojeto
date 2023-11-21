@@ -1,0 +1,43 @@
+---
+title: "Rede PurpleAir"
+subtitle: "https://www2.purpleair.com/"
+excerpt: "Sensores de baixo custo PurpleAir instalados em áreas potencialmente receptoras de material particulado oriundo de atividades de mineração de calcário (considerando como critério a direção dos ventos e a posição das fontes), mas também que representem o risco de exposição da população residente."
+date: 2023-11-01
+author: "Lab-Air"
+draft: false
+images:
+series:
+tags: 
+categories:
+layout: single
+---
+
+
+# Rede de Monitoramento na RMC
+
+
+## Área de estudo
+```{r m, echo = FALSE}
+library(leaflet)
+library(leaflet.extras)
+m = leaflet() %>% addTiles() %>% setView(-49.3, -25.35, zoom = 10)
+m
+```
+
+
+## Mapa meteorológico
+```{r, echo=FALSE}
+knitr::include_url("https://embed.windy.com/embed2.html?lat=-25.380&lon=-49.285&detailLat=-25.262&detailLon=-49.287&width=650&height=450&zoom=10&level=surface&overlay=wind&product=ecmwf&menu=&message=&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=m%2Fs&metricTemp=%C2%B0C&radarRange=-1")
+```
+
+
+## PurpleAir
+
+  O sensor PurpleAir PA-II-SD utiliza um contador de partículas (PMS5003) que usa dois lasers para detectar partículas com diâmetros de 0,3 a 10 µm a partir de sua refletividade, cujo valor é convertido em concentração mássica de MP~1,0~, MP~2,5~ e MP~10~ em μg m^-3^ . Esses sensores também registram dados de umidade e temperatura e serão instalados em pares para monitoramento interno/externo à prédios residenciais ou de prestadores de serviço a fim de estimar a potencial exposição diária tendo em consideração o tempo médio que o indivíduo permanece exposto em cada um dos ambientes.
+  Os dados aqui apresentados são brutos, i.e., exigem correção considerando condições locais de umidade e temperatura
+
+
+```{r}
+knitr::include_url("https://map.purpleair.com/1/m/i/mPM25/a10/p604800/cC0#9.28/-25.3476/-49.293")
+```
+

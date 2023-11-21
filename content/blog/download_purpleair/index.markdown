@@ -1,0 +1,190 @@
+---
+title: "Download PurpleAir data"
+subtitle: Passo a passo para baixar dados do PurpleAir usando o R
+excerpt: ""
+date: 2023-11-20
+author: "Jéssica C. dos Santos-Silva"
+draft: false
+# layout options: single, single-sidebar
+layout: single
+categories:
+---
+
+# Download PurpleAir data  
+
+## Função getPurpleairApiHistory
+Dados são baixados usando a função [getPurpleairApiHistory](https://github.com/willianflores/getPurpleairApiHistory) elaborada pelo Professor Willian Flores da Universidade Federal do Acre[1](www.acrequalidadedoar.info).
+
+
+```r
+source("getPurpleairApiHistory_function.R")
+```
+
+
+## Download dos dados
+*sensorIndex* deve ser definido de acordo com a estação da qual se deseja obter os dados. 
+Neste estudo, estão incluidas as estações:
+
++ Almirante Tamandaré
+    + 175095 (outdoor)
+    + 175115 (outdoor)
++ Campo Largo
+    + 175103 (outdoor)
+    + 175403 (outdoor)
+    + 175235 (outdoor)
+    + 99667 (outdoor)
++ Colombo 
+    + 175407 (outdoor)
++ Itaperuçú
+    + 175121 (outdoor)
+    + 175393 (outdoor)
+    + 175451 (outdoor)
++ Rio Branco do Sul | 
+    + 175123 (indoor)
+    + 175395 (outdoor)
+    + 175101 (outdoor)
+    + 175109 (indoor)
+    + 175099 (indoor)
+    + 175387 (outdoor)
+    + 91267 (outdoor)
+
+### Biblioteca
+#### library(tidyverse)
+
+
+```
+## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.4     ✔ readr     2.1.4
+## ✔ forcats   1.0.0     ✔ stringr   1.5.1
+## ✔ ggplot2   3.4.4     ✔ tibble    3.2.1
+## ✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+## ✔ purrr     1.0.2     
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+```
+
+
+### Baixando os dados de interesse (sensor/local, variaveis/parâmetros)
+
+```r
+#esse id pode ser obtido no mapa da PurpleAir
+sensor_id <- list(175411)
+
+#https://api.purpleair.com/
+variaveis <- c("humidity, temperature, 
+pm1.0_atm, pm1.0_atm_a, pm1.0_atm_b,
+pm2.5_atm, pm2.5_atm_a, pm2.5_atm_b")
+
+purpleair <- getPurpleairApiHistory(
+  sensorIndex    = c(sensor_id),
+  apiReadKey     = "6842E278-8078-11ED-B6F4-42010A800007", #https://develop.purpleair.com/keys
+  startTimeStamp = "2023-05-29 00:00:00",
+  endTimeStamp   = "2023-11-20 23:59:59",
+  average        = "0",
+  fields         = variaveis)
+```
+
+```
+## Carregando pacotes exigidos: httr
+```
+
+```
+## Carregando pacotes exigidos: jsonlite
+```
+
+```
+## 
+## Attaching package: 'jsonlite'
+```
+
+```
+## The following object is masked from 'package:purrr':
+## 
+##     flatten
+```
+
+```
+## Carregando pacotes exigidos: httpcode
+```
+
+```
+## Carregando pacotes exigidos: tcltk
+```
+
+
+### Calculando médias horárias
+
+```r
+purpleair <- purpleair %>%
+  rename(date = time_stamp) %>%
+  mutate(date = as_datetime(ymd_hms(date))) %>%
+  filter(!is.na(date))
+```
+
+```
+## Warning: There was 1 warning in `mutate()`.
+## ℹ In argument: `date = as_datetime(ymd_hms(date))`.
+## Caused by warning:
+## !  80 failed to parse.
+```
+
+```r
+periodico <- purpleair  %>%
+  select(-sensor_id) %>%
+  aggregate(list(cut(purpleair[["date"]], 
+                     "1 hour",
+                     right = F)), 
+            mean, na.rm = T) %>%
+  select(-date) %>%
+  rename(date = Group.1) %>%
+  mutate(sensor_id = sensor_id,
+         date = as_datetime(ymd_hms(date))) %>%
+  unique()
+```
+
+```
+## Warning: There was 1 warning in `mutate()`.
+## ℹ In argument: `date = as_datetime(ymd_hms(date))`.
+## Caused by warning:
+## !  11 failed to parse.
+```
+
+
+### Plotando variação horária
+
+```r
+periodico %>%
+  mutate(month = month(date, label = T),
+         year = year(date),
+         hour = hour(date),
+         date = with(., sprintf("%02d/%d", month, year))) %>%
+  group_by(hour) %>%
+  summarise(umid = mean(humidity, na.rm=T),
+            temp = mean(temperature, na.rm=T),
+            pm2.5 = mean(pm2.5_atm, na.rm=T)) %>%
+  mutate(hour = c(1:24)) %>%
+  ggplot(aes(x = hour)) +
+  geom_bar(aes(y = pm2.5), stat="identity", color="black", 
+           position=position_dodge()) +
+  geom_hline(aes(yintercept = 5), linewidth = 1,
+             color = "red", linetype = "dashed")  + 
+  geom_line(aes(y=temp/2)) +  
+  geom_point(aes(y=temp/2))+ 
+  scale_x_continuous(breaks = seq(1, 24, 1)) +
+  geom_point(aes(y=umid/2), shape = 8)+ 
+  scale_y_continuous(
+    # Features of the first axis
+    name = "MP2,5 (ug m-3) (colunas)",
+    # Add a second axis and specify its features
+    sec.axis = sec_axis(~.*2, name='(*) UR (%) / (-) Temperatura (ºC)') 
+  ) + theme_bw() +
+  xlab("Hora") + 
+  theme(axis.text.x = element_text(angle = 0, vjust = 0.5),
+        legend.position= "top")
+```
+
+<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+
+##

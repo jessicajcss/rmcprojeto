@@ -1,5 +1,5 @@
 ---
-title: "An Rmarkdown post"
+title: "Variação temporal da concentração de poluentes"
 subtitle: ""
 excerpt: "testing the excerpt field"
 date: 2020-12-30
@@ -9,14 +9,37 @@ images:
 series:
 tags:
 categories:
-layout: single
+layout: single_sidebar
 ---
 
 
-## Air quality
+## Rede de Monitoramento na RMC
 
+
+# Área de estudo
+```{r m, echo = FALSE}
+library(leaflet)
+library(leaflet.extras)
+m = leaflet() %>% addTiles() %>% setView(-49.3, -25.35, zoom = 10)
+m
+```
+
+
+# Mapa meteorológico
 ```{r}
-with(airquality, boxplot(Temp ~ Month))
+knitr::include_url("https://www.windy.com/?-25.332,-49.294,11")
+```
+
+
+# PurpleAir
+```{r}
+knitr::include_url("https://map.purpleair.com/1/mPM25/a10/p604800/cC4#9.73/-25.3543/-49.2743")
+```
+
+
+# Sensores internos - Rio Branco do Sul
+```{r}
+knitr::include_url("https://map.purpleair.com/1/o/mPM25/a10/p604800/cC4#13.23/-25.18449/-49.31042")
 ```
 
 

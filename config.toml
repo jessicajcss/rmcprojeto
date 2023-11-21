@@ -28,24 +28,24 @@ enableEmoji = true
     style = "github"
     
 [params]
-  orgName = "RStudio"
-  orgLocal = "Anywhere"
+  orgName = "Lab-Air"
+  orgLocal = "Curitiba"
   description = "Projeto de monitoramento da qualidade do ar em cidades da Região Metropolitana de Curitiba (RMC)."
-  favicon = "/img/favicon.ico"
-  logo = "/img/blogophonic-mark-dark.png"
-  mainSections = ["blog", "project", "talk"]
-  navallcaps = true
+  favicon = "/img/breathing.ico"
+  logo = "/img/breathing.png"
+  mainSections = ["blog", "network", "about"]
+  navallcaps = true #page names in caps
   # show/hide social icons in site header & footer
   # configure social icons and links below in [[params.social]]
   socialInHeader = false
   socialInFooter = true
   # Default image for social sharing and search engines. 
   # Place image file in `static` folder and specify image name here.
-  sharing_image = "/img/goclean.eps"
+  sharing_image = "/img/papillons.jpg"
   # use a built-in color theme
   # one of: earth / forest / grayscale / magma / paper / peach / plum /
   #         poppy / primer / sky / violet / water 
-  theme = "earth"
+  theme = "sky"
   
   # or, leave theme empty & make your own palette
   # see docs at https://hugo-apero.netlify.app/blog/color-themes/
@@ -58,8 +58,8 @@ enableEmoji = true
   # serif options: Fraunces / EB Garamond / Bitter
   # sans-serif options: Commissioner / Atkinson Hyperlegible / Metropolis
   # if you import your own fonts, name them here too
-  customtextFontFamily = "Commissioner"
-  customheadingFontFamily = "Fraunces"
+  customtextFontFamily = "Atkinson Hyperlegible"
+  customheadingFontFamily = "Bitter"
   # alternatively, leave empty and select basic font options: sans-serif or serif
   # for more http://tachyons.io/docs/typography/font-family/
   textFontFamily = "sans-serif"
@@ -99,48 +99,49 @@ enableEmoji = true
 [menu]
   # Configure header 
   [[menu.header]]
-    name = "Sobre"
+    name = "Sobre" #ok
     title = "Sobre o Projeto"
-    url = "/sobre/"
+    url = "/about/"
     weight = 1
   [[menu.header]]
     name = "Rede"
     title = "Rede de Monitoramento"
-    url = "/rede/"
+    url = "/collection/"
     weight = 2
   [[menu.header]]
-    name = "Relatórios"
-    title = "Relatórios"
-    url = "/relatorios/"
+    name = "A Pesquisa"
+    title = "Principais resultados"
+    url = "/blog/"
     weight = 3
   [[menu.header]]
     name = "Equipe"
     title = "Equipe"
-    url = "/team/"
+    url = "/project/"
     weight = 4
-  [[menu.header]]
-    name = "Outros"
-    title = "Outros Trabalhos"
-    url = "/collection/"
-    weight = 5
+
     
   # Configure footer  
-  [[menu.footer]]
-    name = "Licença"
-    title = "Licença"
-    url = "/license/"
-    weight = 1
-  [[menu.footer]]
-    name = "Contato"
-    title = "Formulário de Contato"
-    url = "/contato/"
-    weight = 2
   [[menu.footer]]
     name = "Apoio"
     title = "Apoio"
     url = "/apoio/"
+    weight = 1
+  [[menu.footer]]
+    name = "Contato"
+    title = "Formulário de Contato"
+    url = "/contact/"
+    weight = 2
+  [[menu.footer]]
+    name = "Créditos"
+    title = "Créditos"
+    url = "/credits/"
     weight = 3
-
+  [[menu.footer]]
+    name = "Licença"
+    title = "Licença"
+    url = "/license/"
+    weight = 4
+    
 # see https://gohugo.io/about/hugo-and-gdpr/    
 [privacy]
   [privacy.disqus]

@@ -1,0 +1,16 @@
+---
+title: "Gabriel Bandeira de Lima"
+subtitle: ""
+excerpt: "Graduando de Engenharia Ambiental (UFPR)"
+date: 
+author: ""
+draft: false
+categories:
+weight: 4
+links: 
+
+---
+
+```{r, echo=FALSE}
+knitr::include_url("http://lattes.cnpq.br/4910380835926222", height = 1000)
+```
