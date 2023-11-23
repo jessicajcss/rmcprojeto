@@ -38,7 +38,6 @@ blogdown::build_site()
 
 
 
-
 # for plotting
 library(leaflet)
 library(leaflet.extras)

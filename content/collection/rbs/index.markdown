@@ -24,8 +24,12 @@ layout: single
 
 ## Área de estudo (RMC)
 
+    ## Warning: package 'leaflet' was built under R version 4.3.2
+
+    ## Warning: package 'leaflet.extras' was built under R version 4.3.2
+
 <div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-1" style="width:672px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-1">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]}],"setView":[[-25.19,-49.32],13.3,[]]},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addPopups","args":[-25.193953,-49.311732,"<b>Estação meteorológica<\/b>",null,null,{"maxWidth":300,"minWidth":50,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]}],"setView":[[-25.19,-49.32],13.3,[]],"limits":{"lat":[-25.193953,-25.193953],"lng":[-49.311732,-49.311732]}},"evals":[],"jsHooks":[]}</script>
 
 # Rede de Monitoramento em Rio Branco do Sul
 
@@ -34,7 +38,6 @@ layout: single
 <script defer src="https://wdg.plugfield.com.br/device/plugfield-widget-v1-sd-x.js"></script>
 
 <plugfield-widget-v1 data-device="3118" data-key="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjIxNTc0LCJhaWQiOjE1OTE5LCJvcmlnaW4iOiJybWNxdWFsaWRhZGVkb2FyLm5ldGxpZnkuYXBwIiwiaWF0IjoxNzAwNTE1NzI1fQ.BmRjlaRlYZM3zvlipj-k50pOJMrOaTCUAYABTWRPizE"></plugfield-widget-v1>
-<plugfield-widget-v1 data-device="3184" data-key="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjIxNTc0LCJhaWQiOjE1OTE5LCJvcmlnaW4iOiJybWNxdWFsaWRhZGVkb2FyLm5ldGxpZnkuYXBwIiwiaWF0IjoxNzAwNTE1NzI1fQ.BmRjlaRlYZM3zvlipj-k50pOJMrOaTCUAYABTWRPizE"></plugfield-widget-v1>
 
 ## Sensores internos - Rio Branco do Sul
 

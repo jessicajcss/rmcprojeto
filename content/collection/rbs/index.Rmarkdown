@@ -15,7 +15,10 @@ layout: single
 ```{r m, echo = FALSE}
 library(leaflet)
 library(leaflet.extras)
-m = leaflet() %>% addTiles() %>% setView(-49.32, -25.19, zoom = 13.3)
+m = leaflet() %>% addTiles() %>% 
+  setView(-49.32, -25.19, zoom = 13.3) %>%
+  addPopups(-49.311732, -25.193953, '<b>Estação meteorológica</b>')
+
 m
 ```
 
@@ -26,7 +29,6 @@ m
 
 <script defer src="https://wdg.plugfield.com.br/device/plugfield-widget-v1-sd-x.js"></script>
 <plugfield-widget-v1 data-device="3118" data-key="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjIxNTc0LCJhaWQiOjE1OTE5LCJvcmlnaW4iOiJybWNxdWFsaWRhZGVkb2FyLm5ldGxpZnkuYXBwIiwiaWF0IjoxNzAwNTE1NzI1fQ.BmRjlaRlYZM3zvlipj-k50pOJMrOaTCUAYABTWRPizE"></plugfield-widget-v1>
-<plugfield-widget-v1 data-device="3184" data-key="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjIxNTc0LCJhaWQiOjE1OTE5LCJvcmlnaW4iOiJybWNxdWFsaWRhZGVkb2FyLm5ldGxpZnkuYXBwIiwiaWF0IjoxNzAwNTE1NzI1fQ.BmRjlaRlYZM3zvlipj-k50pOJMrOaTCUAYABTWRPizE"></plugfield-widget-v1>
 
 
 

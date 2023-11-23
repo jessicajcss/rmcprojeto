@@ -16,6 +16,8 @@ Agradecimento especial a todos que apoiam esse projeto
 
 + [Secretaria Municipal de Meio Ambiente de Campo Largo](https://campolargo.pr.gov.br/cidadao/pagina/secretaria-municipal-de-meio-ambiente/) (Colaboração)
 
++ [Secretaria Municipal de Educação de Campo Largo](https://campolargo.atende.net/cidadao/pagina/secretaria-municipal-de-educacao) (Colaboração)
+
 + [Secretaria Municipal de Meio Ambiente de Itaperuçú](https://itaperucu.pr.gov.br/estrutura-organizacional/secretaria-municipal-de-meio-ambiente/) (Colaboração)
 
 + [Prefeitura Municipal de Rio Branco do Sul](https://riobrancodosul.atende.net/) (Colaboração)

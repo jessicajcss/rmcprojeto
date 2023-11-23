@@ -1,0 +1,101 @@
+---
+title: "Análise de dados - histórico"
+subtitle: ""
+excerpt: "Analisando a variação temporal dos dados monitorados"
+date: 2023-11-22
+author: "Jéssica C. dos Santos-Silva"
+draft: false
+images:
+series:
+tags:
+categories:
+layout: single
+---
+
+### Importando os dados
+
+> Importar dados *purpleair.csv* 
+
+```{r, warning = F, message = F}
+library(tidyverse)
+purpleair <- read_csv("./csv/purpleair.csv")
+
+purpleair <- purpleair %>%
+  mutate(sensor_id = as.character(sensor_id),
+         sensor_id = case_when(sensor_id == "175095" ~ "Prefeitura, Almirante Tamandaré", 
+                               sensor_id == "175403" ~ "SMMA, Campo Largo",
+                               sensor_id == "175451" ~ "Embrapa, Colombo",
+                               sensor_id == "175121" ~ "Prefeitura, Itaperuçú",
+                               sensor_id == "175123" ~ "Defesa Civil, Rio Branco do Sul",
+                               sensor_id == "175101" ~ "Dona Eliete, Rio Banco do Sul",
+                               TRUE ~ sensor_id))
+  
+```
+
+
+
+### Plotando variação horária
+```{r, message=F, warning=F, out.width="90%"}
+
+purpleair %>%
+  mutate(month = month(date, label = T),
+         year = year(date),
+         hour = hour(date),
+         date = with(., sprintf("%02d/%d", month, year))) %>%
+  group_by(hour, sensor_id) %>%
+  summarise(umid = mean(humidity, na.rm=T),
+            temp = mean(temperature, na.rm=T),
+            pm2.5 = mean(PM2.5, na.rm=T)) %>%
+  ggplot(aes(x = hour)) +
+  geom_bar(aes(y = pm2.5), stat="identity", color="black", 
+           position=position_dodge()) +
+  geom_hline(aes(yintercept = 5, linetype = "Referência 24h OMS"), linewidth = 1,
+             color = "red", linetype = "dashed")  + 
+  geom_line(aes(y=temp/2.5)) +  
+  geom_point(aes(y=temp/2.5))+ 
+  scale_x_continuous(breaks = seq(1, 24, 1)) +
+  geom_point(aes(y=umid/2.5), shape = 8)+ 
+  scale_y_continuous(
+    # Features of the first axis
+    name = bquote(MP[2.5]),
+    # Add a second axis and specify its features
+    sec.axis = sec_axis(~.*2.5, name='(*) UR (%) / (-) Temperatura (ºC)') 
+  ) + theme_bw() +
+  xlab("Hora") + 
+  theme(axis.text.x = element_text(angle = 0, vjust = 0.5),
+        legend.position= "top") +
+  facet_wrap(sensor_id ~ ., ncol =2)
+
+```
+
+## Série Temporal
+```{r, message=F, warning=F, out.width="90%"}
+# Library
+
+library(tidyverse)
+library(lubridate)
+library(timetk)
+library(plotly)
+
+
+graph <- purpleair %>%
+  group_by(sensor_id) %>%
+  filter(PM2.5 > 0)  %>%
+  plot_time_series(date, PM2.5,             
+                   .facet_ncol = 3,
+                   .color_var = sensor_id,
+                   .facet_scales = "free_x", 
+                   .line_color = c("#009E73", "#CC79A7", "#D55E00"),
+                   .interactive = T,
+                   .smooth = F,
+                   .plotly_slider = F,
+                   .legend_show = F,
+                   .title = "",
+                   .y_lab = "concentração de MP2.5")
+graph
+
+```
+
+
+
+

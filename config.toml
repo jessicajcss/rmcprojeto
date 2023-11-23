@@ -109,7 +109,7 @@ enableEmoji = true
     url = "/collection/"
     weight = 2
   [[menu.header]]
-    name = "A Pesquisa"
+    name = "Pesquisa"
     title = "Principais resultados"
     url = "/blog/"
     weight = 3
