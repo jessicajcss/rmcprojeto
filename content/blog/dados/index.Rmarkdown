@@ -34,7 +34,9 @@ purpleair <- purpleair %>%
 
 
 
-### Plotando variação horária
+### Plotando variação horária 
+
+
 ```{r, message=F, warning=F, out.width="90%"}
 
 purpleair %>%
@@ -61,12 +63,16 @@ purpleair %>%
     # Add a second axis and specify its features
     sec.axis = sec_axis(~.*2.5, name='(*) UR (%) / (-) Temperatura (ºC)') 
   ) + theme_bw() +
-  xlab("Hora") + 
-  theme(axis.text.x = element_text(angle = 0, vjust = 0.5),
+  xlab("Hora do dia") + 
+  theme(axis.text.x = element_text(angle = 0, vjust = 0.5, size = 5),
         legend.position= "top") +
-  facet_wrap(sensor_id ~ ., ncol =2)
+  facet_wrap(sensor_id ~ ., ncol = 2)
 
 ```
+
+
+> ** Linha tracejada em vermelho, indica o valor de [*Referência média 24h OMS*](https://iris.who.int/handle/10665/345329).**
+
 
 ## Série Temporal
 ```{r, message=F, warning=F, out.width="90%"}

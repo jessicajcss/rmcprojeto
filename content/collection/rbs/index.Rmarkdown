@@ -12,7 +12,7 @@ categories:
 layout: single
 ---
 ## Área de estudo (RMC)
-```{r m, echo = FALSE}
+```{r m, echo = FALSE, message=F, warning=FALSE}
 library(leaflet)
 library(leaflet.extras)
 m = leaflet() %>% addTiles() %>% 
@@ -34,19 +34,22 @@ m
 
 ## Sensores internos - Rio Branco do Sul
 
-```{r}
+```{r, fig.align="center", out.height = "1000px", out.width='1000px'}
 knitr::include_url("https://map.purpleair.com/1/o/mPM25/a10/p604800/cC4#13.23/-25.19/-49.31042")
 ```
 
-*Verifique a seguinte seleção (inside) na caixa suspensa*
-![](images/interno.png)
+*Verifique a seguinte seleção (inside) na caixa suspensa*  
+<img src="images/interno.png" alt="" width="40%"/>
 
 
 
 ## Sensores externos - Rio Branco do Sul
-```{r}
+```{r, fig.align="center", out.height = "1000px", out.width='1000px'}
 knitr::include_url("https://map.purpleair.com/1/m/i/mPM25/a0/p604800/cC4#13.53/-25.19077/-49.31164")
 ```
 
-*Verifique a seguinte seleção (outside) na caixa suspensa*
-![](images/externo.png)
+*Verifique a seguinte seleção (outside) na caixa suspensa*  
+<img src="images/externo.png" alt="" width="40%"/>
+
+
+
