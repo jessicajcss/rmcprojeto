@@ -40,8 +40,8 @@ O sensor PurpleAir PA-II-SD utiliza um contador de partículas (PMS5003) que usa
 Os dados aqui apresentados são brutos, i.e., exigem correção considerando condições locais de umidade e temperatura
 
 ``` r
-knitr::include_url("https://map.purpleair.com/1/m/i/mPM25/a10/p604800/cC0#9.28/-25.3476/-49.293")
+knitr::include_url("https://map.purpleair.com/1/mPM25/a10/p604800/cC0#9.28/-25.3476/-49.293")
 ```
 
-<iframe src="https://map.purpleair.com/1/m/i/mPM25/a10/p604800/cC0#9.28/-25.3476/-49.293" width="672" height="400px" data-external="1">
+<iframe src="https://map.purpleair.com/1/mPM25/a10/p604800/cC0#9.28/-25.3476/-49.293" width="672" height="400px" data-external="1">
 </iframe>

@@ -1,0 +1,23 @@
+---
+title: "2º Relatório de Acompanhamento do Projeto"
+subtitle: ""
+excerpt: ""
+date: 2024-01-11
+author: "Jéssica C. dos Santos-Silva"
+draft: false
+images:
+series:
+tags:
+fig_width: 6 
+fig_height: 1000
+categories:
+layout: single
+
+---
+
+
+```{r, fig.align="center", fig.cap=c("2º Relatório apresentado ao Ministério Público"), out.height = "1000px", out.width='1000px',  echo=FALSE}
+knitr::include_graphics("2Relatorio_MinisterioPublico.pdf")
+
+```
+

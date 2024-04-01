@@ -17,7 +17,7 @@ layout: single
 
 
 ## Área de estudo
-```{r m, echo = FALSE}
+```{r m, echo = FALSE, warning = FALSE}
 library(leaflet)
 library(leaflet.extras)
 m = leaflet() %>% addTiles() %>% setView(-49.3, -25.35, zoom = 10)
@@ -38,6 +38,6 @@ knitr::include_url("https://embed.windy.com/embed2.html?lat=-25.380&lon=-49.285&
 
 
 ```{r}
-knitr::include_url("https://map.purpleair.com/1/m/i/mPM25/a10/p604800/cC0#9.28/-25.3476/-49.293")
+knitr::include_url("https://map.purpleair.com/1/mPM25/a10/p604800/cC0#9.28/-25.3476/-49.293")
 ```
 

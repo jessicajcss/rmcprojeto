@@ -27,7 +27,7 @@ purpleair <- purpleair %>%
                                sensor_id == "175451" ~ "Embrapa, Colombo",
                                sensor_id == "175121" ~ "Prefeitura, Itaperuçú",
                                sensor_id == "175123" ~ "Defesa Civil, Rio Branco do Sul",
-                               sensor_id == "175101" ~ "Dona Eliete, Rio Banco do Sul",
+                               sensor_id == "175101" ~ "Dona Eliete, Rio Branco do Sul",
                                TRUE ~ sensor_id))
   
 ```
