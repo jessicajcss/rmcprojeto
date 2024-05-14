@@ -58,7 +58,32 @@ library(tidyverse)
 
 * **Sobre a temperatura:** "Temperature inside of the sensor housing (F). On average, this is 8F higher than ambient conditions."*
 
-```{r, message = FALSE, warning = FALSE}
+
+#### Código para download
+
+#esse id pode ser obtido no mapa da PurpleAir, selecione apenas os de interesse
+sensor_id <-  c('175095', '175099', '175101', '175103',
+                '175109', '175115', '175121', '175123', 
+                '175235', '175393', '175395', '175387',
+                '175403', '175407', '175451')
+
+#Mais informações em https://api.purpleair.com/
+variaveis <- c("humidity, temperature, pm1.0_atm, pm1.0_atm_a, pm1.0_atm_b, pm2.5_atm, pm2.5_atm_a, pm2.5_atm_b, pm2.5_cf_1, pm2.5_cf_1_a, pm2.5_cf_1_b") # para corrigir PM2.5
+
+
+
+
+purpleair <- getPurpleairApiHistory(
+  sensorIndex    = sensor_id,
+  apiReadKey     = "xxxxxx", #Obtida em https://develop.purpleair.com/keys
+  startTimeStamp = "2023-05-29 00:00:00", #defina a data_hora inicial
+  endTimeStamp   = "2023-11-20 23:59:59", #defina a data_hora final
+  average        = "0", #em tempo real
+  fields         = variaveis)
+
+
+
+```{r, message = FALSE, warning = FALSE,  echo=FALSE}
 #esse id pode ser obtido no mapa da PurpleAir, selecione apenas os de interesse
 
 
@@ -77,13 +102,20 @@ purpleair <- getPurpleairApiHistory(
   endTimeStamp   = "2023-11-20 23:59:59", #defina a data_hora final
   average        = "0", #em tempo real
   fields         = variaveis)
+```
+
+
+```{r, message = FALSE, warning = FALSE}
 
 # configurando o dataframe
+
 purpleair <- purpleair %>%
   rename(date = time_stamp) %>% # renomear coluna de tempo
   mutate(date = ymd_hms(date)) %>% # identificar coluna como data/hora
   filter(!is.na(date))
 ```
+
+
 ### Ajuste de dados
 
 Correção de unidades para o Sistema Internacional (de F para ºC) e dos valores de MP, de acordo com estudo [Barkjohn et al. (2021)](https://doi.org/10.5194/amt-14-4617-2021) e também aplicado na tese de [Da Costa (2022)](https://acervodigital.ufpr.br/handle/1884/80817) em dados de Curitiba/PR.  

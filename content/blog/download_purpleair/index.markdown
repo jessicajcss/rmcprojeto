@@ -61,10 +61,9 @@ library(tidyverse)
 * **Sobre a temperatura:** "Temperature inside of the sensor housing (F). On average, this is 8F higher than ambient conditions."*
 
 
-```r
+#### Código para download
+
 #esse id pode ser obtido no mapa da PurpleAir, selecione apenas os de interesse
-
-
 sensor_id <-  c('175095', '175099', '175101', '175103',
                 '175109', '175115', '175121', '175123', 
                 '175235', '175393', '175395', '175387',
@@ -73,20 +72,33 @@ sensor_id <-  c('175095', '175099', '175101', '175103',
 #Mais informações em https://api.purpleair.com/
 variaveis <- c("humidity, temperature, pm1.0_atm, pm1.0_atm_a, pm1.0_atm_b, pm2.5_atm, pm2.5_atm_a, pm2.5_atm_b, pm2.5_cf_1, pm2.5_cf_1_a, pm2.5_cf_1_b") # para corrigir PM2.5
 
+
+
+
 purpleair <- getPurpleairApiHistory(
   sensorIndex    = sensor_id,
-  apiReadKey     = "6842E278-8078-11ED-B6F4-42010A800007", #Obtida em https://develop.purpleair.com/keys
+  apiReadKey     = "xxxxxx", #Obtida em https://develop.purpleair.com/keys
   startTimeStamp = "2023-05-29 00:00:00", #defina a data_hora inicial
   endTimeStamp   = "2023-11-20 23:59:59", #defina a data_hora final
   average        = "0", #em tempo real
   fields         = variaveis)
 
+
+
+
+
+
+
+```r
 # configurando o dataframe
+
 purpleair <- purpleair %>%
   rename(date = time_stamp) %>% # renomear coluna de tempo
   mutate(date = ymd_hms(date)) %>% # identificar coluna como data/hora
   filter(!is.na(date))
 ```
+
+
 ### Ajuste de dados
 
 Correção de unidades para o Sistema Internacional (de F para ºC) e dos valores de MP, de acordo com estudo [Barkjohn et al. (2021)](https://doi.org/10.5194/amt-14-4617-2021) e também aplicado na tese de [Da Costa (2022)](https://acervodigital.ufpr.br/handle/1884/80817) em dados de Curitiba/PR.  
@@ -107,26 +119,26 @@ purpleair %>%
 
 ```
 ##                    date humidity temperature pm1.0_atm pm1.0_atm_a pm1.0_atm_b
-## 95  2023-05-29 23:33:53       35    29.44444     1.485        1.25        1.72
-## 233 2023-05-29 23:35:53       35    30.00000     1.685        1.73        1.64
-## 338 2023-05-29 23:37:53       35    30.00000     1.745        1.69        1.80
-## 83  2023-05-29 23:39:53       35    30.00000     1.315        1.20        1.43
-## 158 2023-05-29 23:41:53       35    30.00000     1.420        1.51        1.33
-## 2   2023-05-29 23:43:53       35    30.00000     1.035        0.86        1.21
+## 238 2023-05-29 23:33:53       35    29.44444     1.485        1.25        1.72
+## 2   2023-05-29 23:35:53       35    30.00000     1.685        1.73        1.64
+## 109 2023-05-29 23:37:53       35    30.00000     1.745        1.69        1.80
+## 108 2023-05-29 23:39:53       35    30.00000     1.315        1.20        1.43
+## 110 2023-05-29 23:41:53       35    30.00000     1.420        1.51        1.33
+## 1   2023-05-29 23:43:53       35    30.00000     1.035        0.86        1.21
 ##     pm2.5_atm pm2.5_atm_a pm2.5_atm_b pm2.5_cf_1 pm2.5_cf_1_a pm2.5_cf_1_b
-## 95      2.155        1.80        2.51      2.155         1.80         2.51
-## 233     2.060        2.17        1.95      2.060         2.17         1.95
-## 338     2.180        2.24        2.12      2.180         2.24         2.12
-## 83      1.780        1.76        1.80      1.780         1.76         1.80
-## 158     1.890        2.10        1.68      1.890         2.10         1.68
-## 2       1.550        1.44        1.66      1.550         1.44         1.66
+## 238     2.155        1.80        2.51      2.155         1.80         2.51
+## 2       2.060        2.17        1.95      2.060         2.17         1.95
+## 109     2.180        2.24        2.12      2.180         2.24         2.12
+## 108     1.780        1.76        1.80      1.780         1.76         1.80
+## 110     1.890        2.10        1.68      1.890         2.10         1.68
+## 1       1.550        1.44        1.66      1.550         1.44         1.66
 ##     sensor_id   PM2.5
-## 95     175095 3.86222
-## 233    175095 3.81244
-## 338    175095 3.87532
-## 83     175095 3.66572
-## 158    175095 3.72336
-## 2      175095 3.54520
+## 238    175095 3.86222
+## 2      175095 3.81244
+## 109    175095 3.87532
+## 108    175095 3.66572
+## 110    175095 3.72336
+## 1      175095 3.54520
 ```
 
 
