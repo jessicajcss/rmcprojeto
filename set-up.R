@@ -26,7 +26,7 @@ blogdown::check_netlify()
 
 blogdown::check_hugo()
 
-blogdown::serve_site()
+blogdown::serve_site() # esse após [R] knit; [TERMINAL] git add --all; git commit -m "MESSAGE"; git push
 
 blogdown::stop_server()
 
