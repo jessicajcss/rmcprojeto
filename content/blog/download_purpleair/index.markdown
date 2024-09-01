@@ -63,6 +63,7 @@ library(tidyverse)
 
 #### Código para download
 
+```r
 #esse id pode ser obtido no mapa da PurpleAir, selecione apenas os de interesse
 sensor_id <-  c('175095', '175099', '175101', '175103',
                 '175109', '175115', '175121', '175123', 
@@ -71,18 +72,20 @@ sensor_id <-  c('175095', '175099', '175101', '175103',
 
 #Mais informações em https://api.purpleair.com/
 variaveis <- c("humidity, temperature, pm1.0_atm, pm1.0_atm_a, pm1.0_atm_b, pm2.5_atm, pm2.5_atm_a, pm2.5_atm_b, pm2.5_cf_1, pm2.5_cf_1_a, pm2.5_cf_1_b") # para corrigir PM2.5
+```
 
 
 
 
-purpleair <- getPurpleairApiHistory(
-  sensorIndex    = sensor_id,
-  apiReadKey     = "xxxxxx", #Obtida em https://develop.purpleair.com/keys
-  startTimeStamp = "2023-05-29 00:00:00", #defina a data_hora inicial
-  endTimeStamp   = "2023-11-20 23:59:59", #defina a data_hora final
-  average        = "0", #em tempo real
-  fields         = variaveis)
-
+```r
+#purpleair <- getPurpleairApiHistory(
+ # sensorIndex    = sensor_id,
+  # apiReadKey     = "xxxxxx", #Obtida em https://develop.purpleair.com/keys
+  # startTimeStamp = "2023-05-29 00:00:00", #defina a data_hora inicial
+  # endTimeStamp   = "2023-11-20 23:59:59", #defina a data_hora final
+  # average        = "0", #em tempo real
+  # fields         = variaveis)
+```
 
 
 
